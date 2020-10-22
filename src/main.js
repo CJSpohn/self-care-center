@@ -30,10 +30,21 @@ function revealMessage() {
 }
 
 function getMessage() {
+  if (!verifySelection) {
+    break;
+  }
   if (affirmationSelect.checked) {
     message.innerText = getRandomData(affirmations)
   } else if (mantraSelect.checked) {
     message.innerText = getRandomData(mantras)
+  }
+}
+
+function verifySelection() {
+  if (affirmationSelect.checked || mantraSelect.checked) {
+    return true
+  } else {
+    return false
   }
 }
 
