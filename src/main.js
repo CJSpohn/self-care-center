@@ -34,6 +34,8 @@ function hideMessage() {
 
 function clearMessage() {
   message.innerText = "";
+  affirmationSelect.checked = false;
+  mantraSelect.checked = false;
   revealMessage();
 }
 
