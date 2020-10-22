@@ -4,15 +4,15 @@ var bellImage = document.querySelector('img');
 var message = document.querySelector('.message');
 var affirmationSelect = document.querySelector('#affirmation')
 var mantraSelect = document.querySelector('#mantra')
-
+var clearButton = document.querySelector('.clear-button')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
 affirmationSelect.addEventListener('click', hideMessage)
 mantraSelect.addEventListener('click', hideMessage)
+clearButton.addEventListener('click', clearMessage)
 
 //event handlers
-
 function displayMessage() {
   if (!bellImage.classList.contains('hidden')) {
     revealMessage();
@@ -23,17 +23,22 @@ function displayMessage() {
 function hideMessage() {
   message.classList.add('hidden');
   bellImage.classList.remove('hidden');
+  clearButton.classList.add('hidden')
 }
 
+function clearMessage() {
+  message.innerText = "";
+  revealMessage();
+}
+
+//helper functions
 function revealMessage() {
   bellImage.classList.toggle('hidden');
   message.classList.toggle('hidden');
+  clearButton.classList.toggle('hidden')
 }
 
 function getMessage() {
-  if (!verifySelection) {
-    break;
-  }
   if (affirmationSelect.checked) {
     message.innerText = getRandomData(affirmations)
   } else if (mantraSelect.checked) {
