@@ -1,10 +1,11 @@
 //query selectors
 var messageButton = document.querySelector('.message-button');
-var bellImage = document.querySelector('img');
+var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
 var affirmationSelect = document.querySelector('#affirmation')
 var mantraSelect = document.querySelector('#mantra')
 var clearButton = document.querySelector('.clear-button')
+var favoriteButton = document.querySelector('.favorite-button')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
@@ -44,11 +45,12 @@ function revealMessage() {
   bellImage.classList.toggle('hidden');
   message.classList.toggle('hidden');
   clearButton.classList.toggle('hidden')
+  favoriteButton.classList.toggle('hidden')
 }
 
 function getMessage() {
-  if (affirmationSelect.checked) {
-    message.innerText = getRandomData(affirmations)
+  if (affirmationSelect.checked) {;
+    message.innerText = getRandomData(affirmations);
   } else if (mantraSelect.checked) {
     message.innerText = getRandomData(mantras)
   }
