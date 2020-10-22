@@ -81,12 +81,10 @@ button {
   align-items: center;
 }
 
-.fav {
+.favorite-star {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  min-width: 130px;
 }
 
 img {

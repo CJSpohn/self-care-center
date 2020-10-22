@@ -1,3 +1,5 @@
+favorites = [];
+
 //query selectors
 var messageButton = document.querySelector('.message-button');
 var bellImage = document.querySelector('.meditation-image');
@@ -12,6 +14,7 @@ messageButton.addEventListener('click', displayMessage)
 affirmationSelect.addEventListener('click', hideMessage)
 mantraSelect.addEventListener('click', hideMessage)
 clearButton.addEventListener('click', clearMessage)
+favoriteButton.addEventListener('click', addToFavorites)
 
 //event handlers
 function displayMessage() {
@@ -38,6 +41,12 @@ function clearMessage() {
   affirmationSelect.checked = false;
   mantraSelect.checked = false;
   revealMessage();
+}
+
+function addToFavorites() {
+  if (!favorites.includes(message.innerText)) {
+    favorites.push(message.innerText)
+  }
 }
 
 //helper functions
