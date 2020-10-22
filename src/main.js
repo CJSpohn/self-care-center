@@ -16,7 +16,9 @@ clearButton.addEventListener('click', clearMessage)
 function displayMessage() {
   if (!verifySelection()) {
     message.innerText = "Please select a message type."
-    return revealMessage()
+    message.classList.toggle('hidden')
+    bellImage.classList.toggle('hidden')
+    return
   }
   if (!bellImage.classList.contains('hidden')) {
     revealMessage();
