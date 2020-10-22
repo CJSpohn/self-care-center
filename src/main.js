@@ -1,4 +1,5 @@
-favorites = [];
+favoriteAffirmations = [];
+favoriteMantras = [];
 
 //query selectors
 var messageButton = document.querySelector('.message-button');
@@ -8,6 +9,7 @@ var affirmationSelect = document.querySelector('#affirmation')
 var mantraSelect = document.querySelector('#mantra')
 var clearButton = document.querySelector('.clear-button')
 var favoriteButton = document.querySelector('.favorite-button')
+var favoriteStar = document.querySelector('.favorite-star')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
@@ -34,6 +36,7 @@ function hideMessage() {
   message.classList.add('hidden');
   bellImage.classList.remove('hidden');
   clearButton.classList.add('hidden')
+  favoriteStar.classList.add('hidden')
 }
 
 function clearMessage() {
@@ -44,8 +47,10 @@ function clearMessage() {
 }
 
 function addToFavorites() {
-  if (!favorites.includes(message.innerText)) {
-    favorites.push(message.innerText)
+  if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
+    favoriteMantras.push(message.innerText)
+  } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
+    favoriteAffirmations.push(message.innerText)
   }
 }
 
@@ -53,8 +58,8 @@ function addToFavorites() {
 function revealMessage() {
   bellImage.classList.toggle('hidden');
   message.classList.toggle('hidden');
+  favoriteStar.classList.toggle('hidden')
   clearButton.classList.toggle('hidden')
-  favoriteButton.classList.toggle('hidden')
 }
 
 function getMessage() {
