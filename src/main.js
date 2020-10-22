@@ -20,10 +20,10 @@ favoriteButton.addEventListener('click', addToFavorites)
 
 //event handlers
 function displayMessage() {
-  if (!verifySelection()) {
+  if (verifySelection() === false) {
     message.innerText = "Please select a message type."
-    message.classList.toggle('hidden')
-    bellImage.classList.toggle('hidden')
+    bellImage.classList.add('hidden')
+    favoriteStar.classList.remove('hidden')
     return
   }
   if (!bellImage.classList.contains('hidden')) {
@@ -57,7 +57,7 @@ function addToFavorites() {
 //helper functions
 function revealMessage() {
   bellImage.classList.toggle('hidden');
-  message.classList.toggle('hidden');
+  message.classList.remove('hidden');
   favoriteStar.classList.toggle('hidden')
   clearButton.classList.toggle('hidden')
 }
@@ -80,4 +80,8 @@ function verifySelection() {
 
 function getRandomData(array) {
   return array[Math.floor(Math.random() * array.length)];
+}
+
+function toggleFavorite() {
+  favoriteButton.classList.toggle('filter');
 }
