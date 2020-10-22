@@ -1,12 +1,13 @@
 //query selectors
-var msgButton = document.querySelector('button');
+var messageButton = document.querySelector('.message-button');
 var bellImage = document.querySelector('img');
 var message = document.querySelector('.message');
 var affirmationSelect = document.querySelector('#affirmation')
 var mantraSelect = document.querySelector('#mantra')
 
+
 //event listeners
-msgButton.addEventListener('click', displayMessage)
+messageButton.addEventListener('click', displayMessage)
 affirmationSelect.addEventListener('click', hideMessage)
 mantraSelect.addEventListener('click', hideMessage)
 
