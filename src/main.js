@@ -26,8 +26,9 @@ function displayMessage() {
     bellImage.classList.add('hidden')
     return
   }
-  revealMessage();
   getMessage();
+  verifyFavorite();
+  revealMessage();
 }
 
 function clearMessage() {
@@ -43,6 +44,7 @@ function addToFavorites() {
   } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
     favoriteAffirmations.push(message.innerText)
   }
+  favoriteButton.classList.remove('filter')
 }
 
 function removeMessage() {
@@ -71,17 +73,17 @@ function getMessage() {
 }
 
 function verifySelection() {
-  if (affirmationSelect.checked || mantraSelect.checked) {
-    return true
+  return (affirmationSelect.checked || mantraSelect.checked)
+}
+
+function verifyFavorite() {
+  if (favoriteMantras.includes(message.innerText) || favoriteAffirmations.includes(message.innerText)) {
+    favoriteButton.classList.remove('filter');
   } else {
-    return false
+    favoriteButton.classList.add('filter');
   }
 }
 
 function getRandomData(array) {
   return array[Math.floor(Math.random() * array.length)];
-}
-
-function toggleFavorite() {
-  favoriteButton.classList.toggle('filter');
 }

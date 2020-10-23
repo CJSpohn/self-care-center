@@ -109,8 +109,8 @@ img {
 
 
 .filter {
-  /* filter: invert(95%) sepia(27%) saturate(5486%) hue-rotate(323deg) brightness(85%) contrast(95%); */
   background-color: transparent;
+  filter: brightness(0%)
 }
 
 .hidden {
