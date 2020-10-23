@@ -43,6 +43,10 @@ h2, h3 {
   text-align: center;
 }
 
+h4 {
+  color: black;
+}
+
 .choices {
   margin: 10px auto 60px auto;
   width: 45vw;
@@ -76,7 +80,8 @@ button {
   background-color: #134d71;
 }
 
-.display {
+.display,
+.confirm-delete {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -89,9 +94,15 @@ button {
   background-color: white;
 }
 
+.confirmation-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  min-width: 70vw;
+}
+
 .display-buttons {
   display: flex;
-  justify-content: center;
   width: 100%;
 }
 
