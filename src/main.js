@@ -147,10 +147,14 @@ function displayFavorites() {
   affirmationsList.innerHTML = ""
   mantrasList.innerHTML = ""
   for (var i = 0; i < favoriteAffirmations.length; i++) {
-    affirmationsList.innerHTML += `<li>${favoriteAffirmations[i]}</li>`
+    if (affirmations.includes(favoriteAffirmations[i])) {
+      affirmationsList.innerHTML += `<li>${favoriteAffirmations[i]}</li>`
+    }
   }
   for (var i = 0; i < favoriteMantras.length; i++) {
-    mantrasList.innerHTML += `<li>${favoriteMantras[i]}</li>`
+    if (mantras.includes(favoriteMantras[i])) {
+      mantrasList.innerHTML += `<li>${favoriteMantras[i]}</li>`
+    }
   }
 }
 

@@ -10,7 +10,7 @@ black - #000000;
 /* Main Display*/
 * {
   font-family: 'Quicksand', sans-serif;
-  color: #ffffff;
+  color: white;
   box-sizing: content-box;
 }
 
@@ -22,7 +22,7 @@ html, body {
 }
 
 body {
-  background-color:white;
+  background-color: white;
   background-image: linear-gradient(to bottom, #134d71, #78a7c6, #f7e4bf);
   background-repeat: no-repeat;
 }
@@ -44,6 +44,7 @@ h2, h3 {
 }
 
 h4 {
+  text-align: center;
   color: black;
 }
 
