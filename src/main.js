@@ -108,7 +108,8 @@ function revealMessage() {
 }
 
 function getMessage() {
-  if (affirmationSelect.checked) {;
+  if (affirmationSelect.checked) {
+    ;
     message.innerText = getRandomData(affirmations);
   } else if (mantraSelect.checked) {
     message.innerText = getRandomData(mantras)
@@ -131,7 +132,7 @@ function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraSelect.checked) {
     favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
-  } else if (affirmationSelect.checked){
+  } else if (affirmationSelect.checked) {
     favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
   }
 }
