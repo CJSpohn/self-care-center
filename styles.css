@@ -6,6 +6,8 @@ dark-blue - #134d71;
 white - #ffffff;
 black - #000000;
 */
+
+/* Main Display*/
 * {
   font-family: 'Quicksand', sans-serif;
   color: #ffffff;
@@ -80,7 +82,13 @@ button {
   align-items: center;
 }
 
-.favorite-star {
+.display-buttons {
+  width: 60%;
+  display: flex;
+  justify-content: center;
+}
+
+.favorite-display {
   width: 90%;
   display: flex;
   flex-direction: row;
@@ -93,7 +101,7 @@ img {
   max-height: 40px;
 }
 
-.favorite-button {
+.star-button {
   display: block;
   max-width: 20px;
   max-height: 20px;
@@ -112,6 +120,11 @@ img {
   background-color: transparent;
   filter: brightness(0%)
 }
+
+/* Favorite Display */
+
+
+
 
 .hidden {
   display: none;

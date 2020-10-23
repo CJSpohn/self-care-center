@@ -7,36 +7,52 @@
 </head>
 
 <body>
-  <section class="wrapper">
     <h1>✨ Self Care Center ✨</h1>
-    <div class="message-select">
-      <h2>Which type of message?</h2>
-      <section class="choices">
-        <section class="radio-buttons">
-          <section class="selection-one">
-            <input type="radio" id="affirmation" name="message-type" value="affirmation">
-            <label for="affirmation" class="btntext">affirmation</label>
+    <section class="main">
+      <div class="message-select">
+        <h2>Which type of message?</h2>
+        <section class="choices">
+          <section class="radio-buttons">
+            <section class="selection-one">
+              <input type="radio" id="affirmation" name="message-type" value="affirmation">
+              <label for="affirmation" class="btntext">affirmation</label>
+            </section>
+            <section class="selection-two">
+              <input type="radio" id="mantra" name="message-type" value="mantra">
+              <label for="mantra" class="btntext">mantra</label>
+            </section>
           </section>
-          <section class="selection-two">
-            <input type="radio" id="mantra" name="message-type" value="mantra">
-            <label for="mantra" class="btntext">mantra</label>
-          </section>
+          <button type="button" class="message-button">Receive Message</button>
         </section>
-        <button type="button" class="message-button">Receive Message</button>
-      </section>
-    </div>
-    <section class="display">
-      <div class="favorite-star">
-        <img class="favorite-button hidden filter" src="assets/star.svg" alt="A little star">
-        <p class="message hidden"></p>
-        <p class="error hidden">Please select a message type</p>
       </div>
-      <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
-      <button type="button" class="clear-button hidden">Clear</button>
+      <section class="display">
+        <div class="favorite-display">
+          <img class="star-button hidden filter" src="assets/star.svg" alt="A little star">
+          <p class="message hidden"></p>
+          <p class="error hidden">Please select a message type</p>
+        </div>
+        <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
+      <section class="display-buttons hidden">
+          <button type="button" class="clear-button">Clear</button>
+          <button type="button" class="favorites-button">Favorites</button>
+      </section>
+    </section>
+  </section>
+  <section class="favorites hidden">
+    <h2>Favorite Messages</h2>
+    <section class="favorited-messages">
+      <h3>Favorite Affirmations</h3>
+      <ul class="saved-affirmations">
+
+      </ul>
+      <h3>Favorite Mantras</h3>
+      <ul class="saved-mantras">
+
+      </ul>
+      <button type="button" class="back-to-main">Get More Self Care</button>
     </section>
   </section>
   <script type="text/javascript" src="src/main.js"></script>
   <script type="text/javascript" src="src/data.js"></script>
 </body>
-
 </html>

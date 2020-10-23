@@ -2,22 +2,30 @@ favoriteAffirmations = [];
 favoriteMantras = [];
 
 //query selectors
+var mainDisplay = document.querySelector('.main');
+var favoritesDisplay = document.querySelector('.favorites')
 var messageButton = document.querySelector('.message-button');
 var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
 var affirmationSelect = document.querySelector('#affirmation')
 var mantraSelect = document.querySelector('#mantra')
 var clearButton = document.querySelector('.clear-button')
-var favoriteButton = document.querySelector('.favorite-button')
+var starButton = document.querySelector('.star-button')
 var favoriteStar = document.querySelector('.favorite-star')
 var errorMessage = document.querySelector('.error')
+var displayButtons = document.querySelector('.display-buttons')
+var savedAffirmations = document.querySelector('.saved-affirmations')
+var savedMantras = document.querySelector('.saved-mantras')
+var favoritesButton = document.querySelector('.favorites-button')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
 affirmationSelect.addEventListener('click', removeMessage)
 mantraSelect.addEventListener('click', removeMessage)
 clearButton.addEventListener('click', clearMessage)
-favoriteButton.addEventListener('click', addToFavorites)
+starButton.addEventListener('click', addToFavorites)
+favoritesButton.addEventListener('click', displayFavorites)
+
 
 //event handlers
 function displayMessage() {
@@ -44,15 +52,20 @@ function addToFavorites() {
   } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
     favoriteAffirmations.push(message.innerText)
   }
-  favoriteButton.classList.remove('filter')
+  starButton.classList.remove('filter')
 }
 
 function removeMessage() {
   errorMessage.classList.add('hidden');
   bellImage.classList.remove('hidden');
   message.classList.add('hidden');
-  favoriteButton.classList.add('hidden');
-  clearButton.classList.add('hidden');
+  displayButtons.classList.add('hidden');
+  starButton.classList.add('hidden');
+}
+
+function displayFavorites() {
+  mainDisplay.classList.toggle('hidden');
+  favoritesDisplay.classList.toggle('hidden');
 }
 
 //helper functions
@@ -60,8 +73,8 @@ function revealMessage() {
   errorMessage.classList.add('hidden');
   bellImage.classList.add('hidden');
   message.classList.remove('hidden');
-  favoriteButton.classList.remove('hidden')
-  clearButton.classList.remove('hidden');
+  starButton.classList.remove('hidden');
+  displayButtons.classList.remove('hidden');
 }
 
 function getMessage() {
@@ -78,9 +91,9 @@ function verifySelection() {
 
 function verifyFavorite() {
   if (favoriteMantras.includes(message.innerText) || favoriteAffirmations.includes(message.innerText)) {
-    favoriteButton.classList.remove('filter');
+    starButton.classList.remove('filter');
   } else {
-    favoriteButton.classList.add('filter');
+    starButton.classList.add('filter');
   }
 }
 
