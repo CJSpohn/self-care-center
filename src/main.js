@@ -14,8 +14,8 @@ var errorMessage = document.querySelector('.error')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
-affirmationSelect.addEventListener('click', hideMessage)
-mantraSelect.addEventListener('click', hideMessage)
+affirmationSelect.addEventListener('click', removeMessage)
+mantraSelect.addEventListener('click', removeMessage)
 clearButton.addEventListener('click', clearMessage)
 favoriteButton.addEventListener('click', addToFavorites)
 
@@ -28,14 +28,6 @@ function displayMessage() {
   }
   revealMessage();
   getMessage();
-}
-
-function hideMessage() {
-  errorMessage.classList.add('hidden');
-  message.classList.add('hidden');
-  bellImage.classList.remove('hidden');
-  clearButton.classList.add('hidden')
-  favoriteButton.classList.add('hidden')
 }
 
 function clearMessage() {
