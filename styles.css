@@ -29,9 +29,9 @@ body {
 
 
 h1 {
-  text-align: center;
   margin: 0;
   padding: 20px 0;
+  text-align: center;
 }
 
 h2 {
@@ -45,11 +45,11 @@ h2, h3 {
 
 .choices {
   margin: 10px auto 60px auto;
-  background-color: #ffffff;
   width: 45vw;
   height: 80px;
   border: 1px solid black;
   border-radius: 10px;
+  background-color: #ffffff;
 }
 
 .radio-buttons {
@@ -61,46 +61,46 @@ h2, h3 {
 }
 
 .btntext {
+  color: black;
   font-style: italic;
   font-size: 14px;
-  color: black;
 }
 
 button {
   display: block;
-  margin: auto;
   width: 150px;
   height: 20px;
-  background-color: #134d71;
+  margin: auto;
   border-radius: 3px;
   border: 0px;
+  background-color: #134d71;
 }
 
 .display {
-  margin: auto;
-  margin-top: 90px;
-  background-color: white;
-  width: 70vw;
-  min-height: 120px;
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 70vw;
+  min-height: 120px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 90px;
+  background-color: white;
 }
 
 .display-buttons {
-  width: 60%;
   display: flex;
   justify-content: center;
+  width: 60%;
 }
 
 .favorite-display {
-  width: 90%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  width: 90%;
 }
 
 img {
@@ -114,14 +114,10 @@ img {
   max-height: 20px;
 }
 
-.message {
-  color: black;
-}
-
+.message,
 .error {
   color: black;
 }
-
 
 .filter {
   background-color: transparent;
@@ -136,17 +132,15 @@ img {
 
 .saved-affirmations,
 .saved-mantras {
-  border-radius: 10px;
-  color: black;
-  background: white;
   width: 40vw;
   min-height: 10vh;
-  height: ;
+  border-radius: 10px;
+  background: white;
 }
 
 li {
-  padding-top: 10px 0;
   max-width: 90%;
+  padding-top: 10px 0;
   color: black;
 }
 
