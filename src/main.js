@@ -59,24 +59,6 @@ function checkFavorites() {
   }
 }
 
-function removeFromFavorites() {
-  starButton.classList.toggle('filter')
-  if (mantraSelect.checked) {
-    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
-  } else if (affirmationSelect.checked){
-    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
-  }
-}
-
-function addToFavorites() {
-  if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
-    favoriteMantras.push(message.innerText)
-  } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
-    favoriteAffirmations.push(message.innerText)
-  }
-  starButton.classList.remove('filter')
-}
-
 function removeMessage() {
   errorMessage.classList.add('hidden');
   bellImage.classList.remove('hidden');
@@ -118,6 +100,24 @@ function verifyFavorite() {
   } else {
     starButton.classList.add('filter');
   }
+}
+
+function removeFromFavorites() {
+  starButton.classList.toggle('filter')
+  if (mantraSelect.checked) {
+    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
+  } else if (affirmationSelect.checked){
+    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
+  }
+}
+
+function addToFavorites() {
+  if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
+    favoriteMantras.push(message.innerText)
+  } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
+    favoriteAffirmations.push(message.innerText)
+  }
+  starButton.classList.remove('filter')
 }
 
 function displayFavorites() {
