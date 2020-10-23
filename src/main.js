@@ -91,6 +91,8 @@ function deleteMessage() {
   } else if (affirmationSelect.checked) {
     affirmations.splice(affirmations.indexOf(message.innerText), 1)
   }
+  message.innerText = `Message removed.`;
+  starButton.classList.add('hidden');
   toggleConfirm();
 }
 
