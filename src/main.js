@@ -18,6 +18,9 @@ var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
 var favoritesButton = document.querySelector('.favorites-button');
 var backButton = document.querySelector('.back-to-main');
+var affirmationsList = document.querySelector('.saved-affirmations')
+var mantrasList = document.querySelector('.saved-mantras')
+
 //event listeners
 messageButton.addEventListener('click', displayMessage);
 affirmationSelect.addEventListener('click', removeMessage);
@@ -66,6 +69,7 @@ function removeMessage() {
 function toggleFavorites() {
   mainDisplay.classList.toggle('hidden');
   favoritesDisplay.classList.toggle('hidden');
+  displayFavorites();
 }
 
 //helper functions
@@ -94,6 +98,17 @@ function verifyFavorite() {
     starButton.classList.remove('filter');
   } else {
     starButton.classList.add('filter');
+  }
+}
+
+function displayFavorites() {
+  affirmationsList.innerHTML = ""
+  mantrasList.innerHTML = ""
+  for (var i = 0; i < favoriteAffirmations.length; i++) {
+    affirmationsList.innerHTML += `<li>${favoriteAffirmations[i]}</li>`
+  }
+  for (var i = 0; i < favoriteMantras.length; i++) {
+    mantrasList.innerHTML += `<li>${favoriteMantras[i]}</li>`
   }
 }
 
