@@ -28,14 +28,19 @@ body {
 }
 
 
-h1, h2, h3 {
+h1 {
   text-align: center;
   margin: 0;
   padding: 20px 0;
 }
 
 h2 {
+  margin-top: 80px;
   font-size: 20px;
+}
+
+h2, h3 {
+  text-align: center;
 }
 
 .choices {
@@ -73,6 +78,7 @@ button {
 
 .display {
   margin: auto;
+  margin-top: 90px;
   background-color: white;
   width: 70vw;
   min-height: 120px;
