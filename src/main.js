@@ -3,6 +3,7 @@ favoriteMantras = [];
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
+var messageDisplay = document.querySelector('.display');
 var favoritesDisplay = document.querySelector('.favorites');
 var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
@@ -14,7 +15,8 @@ var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
 var affirmationsList = document.querySelector('.saved-affirmations')
-var mantrasList = document.querySelector('.saved-mantras')
+var mantrasList = document.querySelector('.saved-mantras');
+var confirmDelete = document.querySelector('.confirm-delete')
 
 var starButton = document.querySelector('.star-button');
 var favoritesButton = document.querySelector('.favorites-button');
@@ -75,6 +77,8 @@ function toggleFavorites() {
 }
 
 function deleteMessage() {
+  confirmDelete.classList.toggle('hidden');
+  messageDisplay.classList.toggle('hidden');
   if (affirmationSelect.checked) {;
     affirmations.splice(affirmations.indexOf(message.innerText), 1)
   } else if (mantraSelect.checked) {
