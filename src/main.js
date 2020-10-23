@@ -21,7 +21,7 @@ var favoritesButton = document.querySelector('.favorites-button');
 var clearButton = document.querySelector('.clear-button');
 var messageButton = document.querySelector('.message-button');
 var backButton = document.querySelector('.back-to-main');
-
+var deleteButton = document.querySelector('.delete-button')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
@@ -31,6 +31,7 @@ clearButton.addEventListener('click', clearMessage);
 starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
 backButton.addEventListener('click', toggleFavorites);
+deleteButton.addEventListener('click', deleteMessage)
 
 //event handlers
 function displayMessage() {
@@ -72,6 +73,8 @@ function toggleFavorites() {
   favoritesDisplay.classList.toggle('hidden');
   displayFavorites();
 }
+
+
 
 //helper functions
 function revealMessage() {

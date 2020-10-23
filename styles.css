@@ -92,7 +92,7 @@ button {
 .display-buttons {
   display: flex;
   justify-content: center;
-  width: 60%;
+  width: 100%;
 }
 
 .favorite-display {
