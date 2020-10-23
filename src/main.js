@@ -10,6 +10,7 @@ var mantraSelect = document.querySelector('#mantra')
 var clearButton = document.querySelector('.clear-button')
 var favoriteButton = document.querySelector('.favorite-button')
 var favoriteStar = document.querySelector('.favorite-star')
+var errorMessage = document.querySelector('.error')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage)
@@ -21,29 +22,27 @@ favoriteButton.addEventListener('click', addToFavorites)
 //event handlers
 function displayMessage() {
   if (verifySelection() === false) {
-    message.innerText = "Please select a message type."
+    errorMessage.classList.remove('hidden')
     bellImage.classList.add('hidden')
-    favoriteStar.classList.remove('hidden')
     return
   }
-  if (!bellImage.classList.contains('hidden')) {
-    revealMessage();
-  }
+  revealMessage();
   getMessage();
 }
 
 function hideMessage() {
+  errorMessage.classList.add('hidden');
   message.classList.add('hidden');
   bellImage.classList.remove('hidden');
   clearButton.classList.add('hidden')
-  favoriteStar.classList.add('hidden')
+  favoriteButton.classList.add('hidden')
 }
 
 function clearMessage() {
   message.innerText = "";
   affirmationSelect.checked = false;
   mantraSelect.checked = false;
-  revealMessage();
+  removeMessage();
 }
 
 function addToFavorites() {
@@ -54,12 +53,21 @@ function addToFavorites() {
   }
 }
 
+function removeMessage() {
+  errorMessage.classList.add('hidden');
+  bellImage.classList.remove('hidden');
+  message.classList.add('hidden');
+  favoriteButton.classList.add('hidden');
+  clearButton.classList.add('hidden');
+}
+
 //helper functions
 function revealMessage() {
-  bellImage.classList.toggle('hidden');
+  errorMessage.classList.add('hidden');
+  bellImage.classList.add('hidden');
   message.classList.remove('hidden');
-  favoriteStar.classList.toggle('hidden')
-  clearButton.classList.toggle('hidden')
+  favoriteButton.classList.remove('hidden')
+  clearButton.classList.remove('hidden');
 }
 
 function getMessage() {

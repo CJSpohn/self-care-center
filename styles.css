@@ -85,6 +85,7 @@ button {
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: s;
 }
 
 img {
@@ -93,16 +94,19 @@ img {
 }
 
 .favorite-button {
-  opacity: 1;
-  background: purple;
+  display: block;
   max-width: 20px;
   max-height: 20px;
 }
 
 .message {
-  max-width: 650px;
   color: black;
 }
+
+.error {
+  color: black;
+}
+
 
 .filter {
   /* filter: invert(95%) sepia(27%) saturate(5486%) hue-rotate(323deg) brightness(85%) contrast(95%); */
