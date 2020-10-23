@@ -65,6 +65,7 @@ button {
   display: block;
   margin: auto;
   width: 150px;
+  height: 20px;
   background-color: #134d71;
   border-radius: 3px;
   border: 0px;

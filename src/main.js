@@ -4,29 +4,31 @@ favoriteMantras = [];
 //query selectors
 var mainDisplay = document.querySelector('.main');
 var favoritesDisplay = document.querySelector('.favorites');
-var messageButton = document.querySelector('.message-button');
 var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
 var affirmationSelect = document.querySelector('#affirmation');
 var mantraSelect = document.querySelector('#mantra');
-var clearButton = document.querySelector('.clear-button');
-var starButton = document.querySelector('.star-button');
 var favoriteStar = document.querySelector('.favorite-star');
 var errorMessage = document.querySelector('.error');
 var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
-var favoritesButton = document.querySelector('.favorites-button');
-var backButton = document.querySelector('.back-to-main');
 var affirmationsList = document.querySelector('.saved-affirmations')
 var mantrasList = document.querySelector('.saved-mantras')
+
+var starButton = document.querySelector('.star-button');
+var favoritesButton = document.querySelector('.favorites-button');
+var clearButton = document.querySelector('.clear-button');
+var messageButton = document.querySelector('.message-button');
+var backButton = document.querySelector('.back-to-main');
+
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
 affirmationSelect.addEventListener('click', removeMessage);
 mantraSelect.addEventListener('click', removeMessage);
 clearButton.addEventListener('click', clearMessage);
-starButton.addEventListener('click', addToFavorites);
+starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
 backButton.addEventListener('click', toggleFavorites);
 
@@ -47,6 +49,23 @@ function clearMessage() {
   affirmationSelect.checked = false;
   mantraSelect.checked = false;
   removeMessage();
+}
+
+function checkFavorites() {
+  if (starButton.classList.contains('filter')) {
+    addToFavorites();
+  } else {
+    removeFromFavorites();
+  }
+}
+
+function removeFromFavorites() {
+  starButton.classList.toggle('filter')
+  if (mantraSelect.checked) {
+    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
+  } else if (affirmationSelect.checked){
+    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
+  }
 }
 
 function addToFavorites() {
