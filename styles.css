@@ -28,8 +28,8 @@ body {
 }
 
 
-h1, h2 {
-  text-align:center;
+h1, h2, h3 {
+  text-align: center;
   margin: 0;
   padding: 20px 0;
 }
@@ -122,7 +122,19 @@ img {
 }
 
 /* Favorite Display */
+.affirmation-display {
+  display: flex;
+  justify-content: space-around;
+}
 
+.saved-affirmations,
+.saved-mantras {
+  border-radius: 10px;
+  color: black;
+  background: white;
+  min-width: 30vw;
+  min-height: 10vh;
+}
 
 
 
