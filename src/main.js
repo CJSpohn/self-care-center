@@ -74,7 +74,13 @@ function toggleFavorites() {
   displayFavorites();
 }
 
-
+function deleteMessage() {
+  if (affirmationSelect.checked) {;
+    affirmations.splice(affirmations.indexOf(message.innerText), 1)
+  } else if (mantraSelect.checked) {
+    mantras.splice(mantras.indexOf(message.innerText), 1)
+  }
+}
 
 //helper functions
 function revealMessage() {
