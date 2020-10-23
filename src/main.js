@@ -24,6 +24,8 @@ var clearButton = document.querySelector('.clear-button');
 var messageButton = document.querySelector('.message-button');
 var backButton = document.querySelector('.back-to-main');
 var deleteButton = document.querySelector('.delete-button')
+var yesButton = document.querySelector('.yes')
+var noButton = document.querySelector('.no')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
@@ -33,7 +35,9 @@ clearButton.addEventListener('click', clearMessage);
 starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
 backButton.addEventListener('click', toggleFavorites);
-deleteButton.addEventListener('click', deleteMessage)
+deleteButton.addEventListener('click', toggleConfirm)
+yesButton.addEventListener('click', deleteMessage)
+noButton.addEventListener('click', toggleConfirm)
 
 //event handlers
 function displayMessage() {
@@ -76,15 +80,21 @@ function toggleFavorites() {
   displayFavorites();
 }
 
-function deleteMessage() {
+function toggleConfirm() {
   confirmDelete.classList.toggle('hidden');
   messageDisplay.classList.toggle('hidden');
-  if (affirmationSelect.checked) {;
-    affirmations.splice(affirmations.indexOf(message.innerText), 1)
-  } else if (mantraSelect.checked) {
-    mantras.splice(mantras.indexOf(message.innerText), 1)
-  }
 }
+
+function deleteMessage() {
+  if (mantraSelect.checked) {
+    mantras.splice(mantras.indexOf(message.innerText), 1)
+  } else if (affirmationSelect.checked) {
+    affirmations.splice(affirmations.indexOf(message.innerText), 1)
+  }
+  toggleConfirm();
+}
+
+
 
 //helper functions
 function revealMessage() {
