@@ -1,5 +1,7 @@
-favoriteAffirmations = [];
-favoriteMantras = [];
+var favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations`)) || [];
+var favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
+affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
+mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
@@ -26,6 +28,7 @@ var backButton = document.querySelector('.back-to-main');
 var deleteButton = document.querySelector('.delete-button')
 var yesButton = document.querySelector('.yes')
 var noButton = document.querySelector('.no')
+var resetButton = document.querySelector('.remove-data')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
@@ -38,6 +41,7 @@ backButton.addEventListener('click', toggleFavorites);
 deleteButton.addEventListener('click', toggleConfirm)
 yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
+resetButton.addEventListener('click', alertReset)
 
 //event handlers
 function displayMessage() {
@@ -91,9 +95,17 @@ function deleteMessage() {
   } else if (affirmationSelect.checked) {
     affirmations.splice(affirmations.indexOf(message.innerText), 1)
   }
+  removeFromFavorites();
   message.innerText = `Message deleted.`;
   starButton.classList.add('hidden');
   toggleConfirm();
+}
+
+function alertReset() {
+  if (confirm('This will reset all page data. Are you sure?')) {
+    localStorage.clear();
+    window.location.reload();
+  }
 }
 
 //helper functions
@@ -129,18 +141,36 @@ function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraSelect.checked) {
     favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
+    removeFromLocalStorage('favoriteMantras', message.innerText, mantras);
+    removeFromLocalStorage('mantras', message.innerText, mantras);
   } else if (affirmationSelect.checked) {
     favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
+    removeFromLocalStorage('favoriteAffirmations', message.innerText, affirmations);
+    removeFromLocalStorage('affirmations', message.innerText, affirmations);
   }
 }
 
 function addToFavorites() {
   if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
-    favoriteMantras.push(message.innerText)
+    favoriteMantras.push(message.innerText);
+    saveToLocalStorage('favoriteMantras', message.innerText);
   } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
-    favoriteAffirmations.push(message.innerText)
+    favoriteAffirmations.push(message.innerText);
+    saveToLocalStorage('favoriteAffirmations', message.innerText);
   }
-  starButton.classList.remove('filter')
+  starButton.classList.remove('filter');
+}
+
+function saveToLocalStorage(arrayName, message) {
+  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || [];
+  arrayData.push(message);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
+}
+
+function removeFromLocalStorage(arrayName, message, array) {
+  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || array;
+  arrayData.splice(arrayData.indexOf(message), 1);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
 function displayFavorites() {
