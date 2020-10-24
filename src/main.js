@@ -3,6 +3,7 @@ favoriteMantras = [];
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
+var messageDisplay = document.querySelector('.display');
 var favoritesDisplay = document.querySelector('.favorites');
 var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
@@ -14,14 +15,17 @@ var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
 var affirmationsList = document.querySelector('.saved-affirmations')
-var mantrasList = document.querySelector('.saved-mantras')
+var mantrasList = document.querySelector('.saved-mantras');
+var confirmDelete = document.querySelector('.confirm-delete')
 
 var starButton = document.querySelector('.star-button');
 var favoritesButton = document.querySelector('.favorites-button');
 var clearButton = document.querySelector('.clear-button');
 var messageButton = document.querySelector('.message-button');
 var backButton = document.querySelector('.back-to-main');
-
+var deleteButton = document.querySelector('.delete-button')
+var yesButton = document.querySelector('.yes')
+var noButton = document.querySelector('.no')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
@@ -31,6 +35,9 @@ clearButton.addEventListener('click', clearMessage);
 starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
 backButton.addEventListener('click', toggleFavorites);
+deleteButton.addEventListener('click', toggleConfirm)
+yesButton.addEventListener('click', deleteMessage)
+noButton.addEventListener('click', toggleConfirm)
 
 //event handlers
 function displayMessage() {
@@ -73,6 +80,22 @@ function toggleFavorites() {
   displayFavorites();
 }
 
+function toggleConfirm() {
+  confirmDelete.classList.toggle('hidden');
+  messageDisplay.classList.toggle('hidden');
+}
+
+function deleteMessage() {
+  if (mantraSelect.checked) {
+    mantras.splice(mantras.indexOf(message.innerText), 1)
+  } else if (affirmationSelect.checked) {
+    affirmations.splice(affirmations.indexOf(message.innerText), 1)
+  }
+  message.innerText = `Message deleted.`;
+  starButton.classList.add('hidden');
+  toggleConfirm();
+}
+
 //helper functions
 function revealMessage() {
   errorMessage.classList.add('hidden');
@@ -83,10 +106,10 @@ function revealMessage() {
 }
 
 function getMessage() {
-  if (affirmationSelect.checked) {;
+  if (affirmationSelect.checked) {
     message.innerText = getRandomData(affirmations);
   } else if (mantraSelect.checked) {
-    message.innerText = getRandomData(mantras)
+    message.innerText = getRandomData(mantras);
   }
 }
 
@@ -106,7 +129,7 @@ function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraSelect.checked) {
     favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
-  } else if (affirmationSelect.checked){
+  } else if (affirmationSelect.checked) {
     favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
   }
 }
@@ -124,10 +147,14 @@ function displayFavorites() {
   affirmationsList.innerHTML = ""
   mantrasList.innerHTML = ""
   for (var i = 0; i < favoriteAffirmations.length; i++) {
-    affirmationsList.innerHTML += `<li>${favoriteAffirmations[i]}</li>`
+    if (affirmations.includes(favoriteAffirmations[i])) {
+      affirmationsList.innerHTML += `<li>${favoriteAffirmations[i]}</li>`
+    }
   }
   for (var i = 0; i < favoriteMantras.length; i++) {
-    mantrasList.innerHTML += `<li>${favoriteMantras[i]}</li>`
+    if (mantras.includes(favoriteMantras[i])) {
+      mantrasList.innerHTML += `<li>${favoriteMantras[i]}</li>`
+    }
   }
 }
 

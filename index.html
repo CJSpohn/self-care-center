@@ -25,34 +25,38 @@
           <button type="button" class="message-button">Receive Message</button>
         </section>
       </div>
+      <section class="confirm-delete hidden">
+        <p>Are you sure you want to delete this message? It will also be removed from your favorites.</p>
+          <section class="confirmation-buttons">
+            <button type="button" class="yes">Yes</button>
+            <button type="button" class="no">No</button>
+          </section>
+      </section>
       <section class="display">
         <div class="favorite-display">
-          <img class="star-button hidden filter" src="assets/star.svg" alt="A little star">
+          <img class="star-button hidden filter" src="assets/star.svg" alt="A little star" title="Click to favorite">
           <p class="message hidden"></p>
           <p class="error hidden">Please select a message type</p>
         </div>
         <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
       <section class="display-buttons hidden">
-          <button type="button" class="clear-button">Clear</button>
-          <button type="button" class="favorites-button">Favorites</button>
+        <button type="button" class="favorites-button">Favorites</button>
+        <button type="button" class="clear-button">Clear</button>
+        <button type="button" class="delete-button">Delete</button>
       </section>
     </section>
   </section>
   <section class="favorites hidden">
     <h2>Saved Self Care</h2>
-
     <section class="affirmation-display">
-
       <section class="favorited-affirmations">
         <h3>Favorite Affirmations</h3>
         <ul class="saved-affirmations">
-
         </ul>
       </section>
       <section class="favorited-mantras">
         <h3>Favorite Mantras</h3>
         <ul class="saved-mantras">
-
         </ul>
       </section>
     </section>
