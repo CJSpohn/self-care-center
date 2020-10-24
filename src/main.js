@@ -91,12 +91,10 @@ function deleteMessage() {
   } else if (affirmationSelect.checked) {
     affirmations.splice(affirmations.indexOf(message.innerText), 1)
   }
-  message.innerText = `Message removed.`;
+  message.innerText = `Message deleted.`;
   starButton.classList.add('hidden');
   toggleConfirm();
 }
-
-
 
 //helper functions
 function revealMessage() {
@@ -109,10 +107,9 @@ function revealMessage() {
 
 function getMessage() {
   if (affirmationSelect.checked) {
-    ;
     message.innerText = getRandomData(affirmations);
   } else if (mantraSelect.checked) {
-    message.innerText = getRandomData(mantras)
+    message.innerText = getRandomData(mantras);
   }
 }
 
