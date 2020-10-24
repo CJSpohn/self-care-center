@@ -1,5 +1,7 @@
 favoriteAffirmations = [];
-favoriteMantras = [];
+favoriateMantras = [];
+favoriteAffirmations = JSON.parse(localStorage.getItem(favoriteAffirmations)) || [];
+favoriteMantras = JSON.parse(localStorage.getItem(favoriteAffirmations)) || [];
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
@@ -129,18 +131,34 @@ function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraSelect.checked) {
     favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
+    removeFromLocalStorage('favoriteMantras', message.innerText)
   } else if (affirmationSelect.checked) {
     favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
+    removeFromLocalStorage('favoriteAffirmations', message.innerText)
   }
 }
 
 function addToFavorites() {
   if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
     favoriteMantras.push(message.innerText)
+    saveToLocalStorage('favoriteMantras', message.innerText)
   } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
     favoriteAffirmations.push(message.innerText)
+    saveToLocalStorage('favoriteAffirmations', message.innerText)
   }
   starButton.classList.remove('filter')
+}
+
+function saveToLocalStorage(arrayName, message) {
+  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || [];
+  arrayData.push(message);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
+}
+
+function removeFromLocalStorage(arrayName, message) {
+  var arrayData = JSON.parse(localStorage.getItem(arrayName));
+  arrayData.splice(arrayData.indexOf(message), 1);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
 function displayFavorites() {
