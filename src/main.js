@@ -1,5 +1,7 @@
 var favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations`)) || [];
 var favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
+affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
+mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
@@ -91,9 +93,9 @@ function deleteMessage() {
   } else if (affirmationSelect.checked) {
     affirmations.splice(affirmations.indexOf(message.innerText), 1)
   }
+  removeFromFavorites();
   message.innerText = `Message deleted.`;
   starButton.classList.add('hidden');
-  removeFromFavorites();
   toggleConfirm();
 }
 
@@ -130,22 +132,24 @@ function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraSelect.checked) {
     favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
-    removeFromLocalStorage('favoriteMantras', message.innerText)
+    removeFromLocalStorage('favoriteMantras', message.innerText, mantras);
+    removeFromLocalStorage('mantras', message.innerText, mantras);
   } else if (affirmationSelect.checked) {
     favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
-    removeFromLocalStorage('favoriteAffirmations', message.innerText)
+    removeFromLocalStorage('favoriteAffirmations', message.innerText, affirmations);
+    removeFromLocalStorage('affirmations', message.innerText, affirmations);
   }
 }
 
 function addToFavorites() {
   if (mantraSelect.checked && !favoriteMantras.includes(message.innerText)) {
-    favoriteMantras.push(message.innerText)
-    saveToLocalStorage('favoriteMantras', message.innerText)
+    favoriteMantras.push(message.innerText);
+    saveToLocalStorage('favoriteMantras', message.innerText);
   } else if (affirmationSelect.checked && !favoriteAffirmations.includes(message.innerText)) {
-    favoriteAffirmations.push(message.innerText)
-    saveToLocalStorage('favoriteAffirmations', message.innerText)
+    favoriteAffirmations.push(message.innerText);
+    saveToLocalStorage('favoriteAffirmations', message.innerText);
   }
-  starButton.classList.remove('filter')
+  starButton.classList.remove('filter');
 }
 
 function saveToLocalStorage(arrayName, message) {
@@ -154,8 +158,8 @@ function saveToLocalStorage(arrayName, message) {
   localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
-function removeFromLocalStorage(arrayName, message) {
-  var arrayData = JSON.parse(localStorage.getItem(arrayName));
+function removeFromLocalStorage(arrayName, message, array) {
+  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || array;
   arrayData.splice(arrayData.indexOf(message), 1);
   localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
