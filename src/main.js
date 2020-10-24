@@ -1,7 +1,5 @@
-favoriteAffirmations = [];
-favoriteMantras = [];
-favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations`)) || [];
-favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
+var favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations`)) || [];
+var favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
@@ -95,6 +93,7 @@ function deleteMessage() {
   }
   message.innerText = `Message deleted.`;
   starButton.classList.add('hidden');
+  removeFromFavorites();
   toggleConfirm();
 }
 
