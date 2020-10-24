@@ -1,7 +1,7 @@
 favoriteAffirmations = [];
-favoriateMantras = [];
-favoriteAffirmations = JSON.parse(localStorage.getItem(favoriteAffirmations)) || [];
-favoriteMantras = JSON.parse(localStorage.getItem(favoriteAffirmations)) || [];
+favoriteMantras = [];
+favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations`)) || [];
+favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
 
 //query selectors
 var mainDisplay = document.querySelector('.main');
