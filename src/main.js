@@ -28,6 +28,7 @@ var backButton = document.querySelector('.back-to-main');
 var deleteButton = document.querySelector('.delete-button')
 var yesButton = document.querySelector('.yes')
 var noButton = document.querySelector('.no')
+var resetButton = document.querySelector('.remove-data')
 
 //event listeners
 messageButton.addEventListener('click', displayMessage);
@@ -40,6 +41,7 @@ backButton.addEventListener('click', toggleFavorites);
 deleteButton.addEventListener('click', toggleConfirm)
 yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
+resetButton.addEventListener('click', alertReset)
 
 //event handlers
 function displayMessage() {
@@ -97,6 +99,13 @@ function deleteMessage() {
   message.innerText = `Message deleted.`;
   starButton.classList.add('hidden');
   toggleConfirm();
+}
+
+function alertReset() {
+  if (confirm('This will reset all page data. Are you sure?')) {
+    localStorage.clear();
+    window.location.reload();
+  }
 }
 
 //helper functions
