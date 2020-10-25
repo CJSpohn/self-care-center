@@ -9,8 +9,8 @@ var messageDisplay = document.querySelector('.display');
 var favoritesDisplay = document.querySelector('.favorites');
 var bellImage = document.querySelector('.meditation-image');
 var message = document.querySelector('.message');
-var affirmationRadio = document.querySelector('#affirmation');
-var mantraRadio = document.querySelector('#mantra');
+var affirmationRadio = document.querySelector('.affirmation');
+var mantraRadio = document.querySelector('.mantra');
 var favoriteStar = document.querySelector('.favorite-star');
 var errorMessage = document.querySelector('.error');
 var displayButtons = document.querySelector('.display-buttons');
@@ -29,9 +29,9 @@ var noButton = document.querySelector('.no')
 var resetButton = document.querySelector('.remove-data')
 
 //event listeners
-messageButton.addEventListener('click', displayMessage);
 affirmationRadio.addEventListener('click', removeMessage);
 mantraRadio.addEventListener('click', removeMessage);
+messageButton.addEventListener('click', displayMessage);
 clearButton.addEventListener('click', clearMessage);
 starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
