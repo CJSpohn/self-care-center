@@ -22,6 +22,7 @@ var savedMantras = document.querySelector('.saved-mantras');
 var confirmDelete = document.querySelector('.confirm-delete');
 var nameInput = document.querySelector('.name');
 var nameDisplay = document.querySelector('.name-display');
+var logOut = document.querySelector('.log-out')
 
 var enterButton = document.querySelector('.enter-button');
 var starButton = document.querySelector('.star-button');
@@ -33,6 +34,7 @@ var deleteButton = document.querySelector('.delete-button')
 var yesButton = document.querySelector('.yes')
 var noButton = document.querySelector('.no')
 var resetButton = document.querySelector('.remove-data')
+
 
 
 //event listeners
@@ -48,6 +50,7 @@ yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
 resetButton.addEventListener('click', alertReset)
 enterButton.addEventListener('click', enterSite)
+logOut.addEventListener('click', logUserOut)
 
 if (visitor !== '') {
   nameInput.value = visitor;
@@ -126,6 +129,12 @@ function enterSite() {
     nameDisplay.innerText = `Hello, ${nameInput.value}. Which type of message?`
     localStorage.setItem('visitor', JSON.stringify(nameInput.value))
   }
+}
+
+function logUserOut() {
+  console.log('poopy')
+  localStorage.clear();
+  window.location.reload();
 }
 
 //helper functions

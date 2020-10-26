@@ -64,6 +64,12 @@ button {
   background-color: #134d71;
 }
 
+.log-out {
+  margin: 20px auto;
+  color: white;
+  font-size: 20px;
+}
+
 .choices {
   margin: 10px auto 60px auto;
   width: 45vw;
@@ -211,4 +217,12 @@ li {
 .log-in-image {
   max-width: 60px;
   max-height: 60px;
+}
+
+.log-out {
+  width: 100px;
+}
+.log-out:hover {
+  border: 1px solid white;
+  cursor: pointer;
 }
