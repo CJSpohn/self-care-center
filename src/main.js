@@ -4,6 +4,8 @@ affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
 mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
 
 //query selectors
+var logInDisplay = document.querySelector('.log-in')
+var fullSiteDisplay = document.querySelector('.full-site');
 var mainDisplay = document.querySelector('.main');
 var messageDisplay = document.querySelector('.display');
 var favoritesDisplay = document.querySelector('.favorites');
@@ -17,7 +19,9 @@ var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
 var confirmDelete = document.querySelector('.confirm-delete')
+var nameInput = document.querySelector('.name')
 
+var enterButton = document.querySelector('.enter-button');
 var starButton = document.querySelector('.star-button');
 var favoritesButton = document.querySelector('.favorites-button');
 var clearButton = document.querySelector('.clear-button');
@@ -27,6 +31,7 @@ var deleteButton = document.querySelector('.delete-button')
 var yesButton = document.querySelector('.yes')
 var noButton = document.querySelector('.no')
 var resetButton = document.querySelector('.remove-data')
+
 
 //event listeners
 affirmationRadio.addEventListener('click', removeMessage);
@@ -40,6 +45,7 @@ deleteButton.addEventListener('click', toggleConfirm)
 yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
 resetButton.addEventListener('click', alertReset)
+enterButton.addEventListener('click', enterSite)
 
 //event handlers
 function displayMessage() {
@@ -103,6 +109,13 @@ function alertReset() {
   if (confirm('This will reset all page data. Are you sure?')) {
     localStorage.clear();
     window.location.reload();
+  }
+}
+
+function enterSite() {
+  if (nameInput.value) {
+    logInDisplay.classList.toggle('hidden');
+    fullSiteDisplay.classList.toggle('hidden');
   }
 }
 
