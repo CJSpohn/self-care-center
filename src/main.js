@@ -104,15 +104,17 @@ function toggleConfirm() {
 }
 
 function deleteMessage() {
-  if (mantraRadio.checked) {
-    mantras.splice(mantras.indexOf(message.innerText), 1)
-  } else if (affirmationRadio.checked) {
-    affirmations.splice(affirmations.indexOf(message.innerText), 1)
+  if (message.innerText != `Message deleted.`) {
+    if (mantraRadio.checked) {
+      mantras.splice(mantras.indexOf(message.innerText), 1)
+    } else if (affirmationRadio.checked) {
+      affirmations.splice(affirmations.indexOf(message.innerText), 1)
+    }
+    removeFromFavorites();
+    message.innerText = `Message deleted.`;
+    starButton.classList.add('hidden');
+    toggleConfirm();
   }
-  removeFromFavorites();
-  message.innerText = `Message deleted.`;
-  starButton.classList.add('hidden');
-  toggleConfirm();
 }
 
 function alertReset() {
@@ -132,7 +134,6 @@ function enterSite() {
 }
 
 function logUserOut() {
-  console.log('poopy')
   localStorage.clear();
   window.location.reload();
 }
@@ -168,12 +169,10 @@ function verifyFavorite() {
 
 function removeFromFavorites() {
   starButton.classList.toggle('filter')
-  if (mantraRadio.checked) {
-    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
+  if (mantraRadio.checked && favoriteMantras.includes(message.innerText)) {
     removeFromLocalStorage('favoriteMantras', message.innerText, mantras);
     removeFromLocalStorage('mantras', message.innerText, mantras);
-  } else if (affirmationRadio.checked) {
-    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
+  } else if (affirmationRadio.checked && favoriteAffirmations.includes(message.innerText)) {
     removeFromLocalStorage('favoriteAffirmations', message.innerText, affirmations);
     removeFromLocalStorage('affirmations', message.innerText, affirmations);
   }
