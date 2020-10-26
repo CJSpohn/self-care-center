@@ -71,12 +71,12 @@ The project utilizes local storage to remember the name, favorites, and deleted 
 
 The project was written using HTML, CSS, and Javascript.
 
-### Resources Used
+## Resources Used
 - Atom - text editor
 - GitHub - project mangement and workflow
 - Online resources
 
-### Authors
+## Authors
 Chris Spohn [GitHub](https://github.com/CJSpohn)
 
 [Live site](https://cjspohn.github.io/self-care-center/)
