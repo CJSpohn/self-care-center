@@ -50,7 +50,7 @@ yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
 resetButton.addEventListener('click', alertReset)
 enterButton.addEventListener('click', enterSite)
-logOut.addEventListener('click', logUserOut)
+logOut.addEventListener('click', alertReset)
 
 if (visitor !== '') {
   nameInput.value = visitor;
@@ -106,9 +106,9 @@ function toggleConfirm() {
 function deleteMessage() {
   if (message.innerText != `Message deleted.`) {
     if (mantraRadio.checked) {
-      mantras.splice(mantras.indexOf(message.innerText), 1)
+      removeFromLocalStorage('mantras', message.innerText, mantras);
     } else if (affirmationRadio.checked) {
-      affirmations.splice(affirmations.indexOf(message.innerText), 1)
+      removeFromLocalStorage('affirmations', message.innerText, affirmations);
     }
     removeFromFavorites();
     message.innerText = `Message deleted.`;
@@ -133,11 +133,6 @@ function enterSite() {
   } else {
     nameInput.classList.add('error')
   }
-}
-
-function logUserOut() {
-  localStorage.clear();
-  window.location.reload();
 }
 
 //helper functions
@@ -172,11 +167,11 @@ function verifyFavorite() {
 function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraRadio.checked && favoriteMantras.includes(message.innerText)) {
+    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1)
     removeFromLocalStorage('favoriteMantras', message.innerText, mantras);
-    removeFromLocalStorage('mantras', message.innerText, mantras);
   } else if (affirmationRadio.checked && favoriteAffirmations.includes(message.innerText)) {
+    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1)
     removeFromLocalStorage('favoriteAffirmations', message.innerText, affirmations);
-    removeFromLocalStorage('affirmations', message.innerText, affirmations);
   }
 }
 
