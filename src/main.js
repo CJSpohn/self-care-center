@@ -182,16 +182,16 @@ function addToFavorites() {
   starButton.classList.remove('filter');
 }
 
-function saveToLocalStorage(arrayName, message, array) {
-  array = JSON.parse(localStorage.getItem(arrayName)) || [];
-  array.push(message);
-  localStorage.setItem(arrayName, JSON.stringify(array));
+function saveToLocalStorage(arrayName, message) {
+  arrayData = JSON.parse(localStorage.getItem(arrayName)) || [];
+  arrayData.push(message);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
 function removeFromLocalStorage(arrayName, message, array) {
-  array = JSON.parse(localStorage.getItem(arrayName)) || array;
-  array.splice(array.indexOf(message), 1);
-  localStorage.setItem(arrayName, JSON.stringify(array));
+  arrayData = JSON.parse(localStorage.getItem(arrayName)) || array;
+  arrayData.splice(array.indexOf(message), 1);
+  localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
 function displayFavorites() {

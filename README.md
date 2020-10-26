@@ -51,19 +51,19 @@ This project does not require any installations in order to run. All functionali
 
 A user is first greeted with the log screen. In order to proceed, you must enter the name you would like to be referred to by.
 
-<img src="assets/log-in.png">
+<img src="https://user-images.githubusercontent.com/69563078/97226665-ed15dc00-1799-11eb-9000-75b83e1dfd5b.png">
 
 Once on the main page a user can select whether they would like to receive an affirmation or a mantra. Additionally, the app will remember the user and will not require a log in on page refresh.
 
-<img src="assets/main-page.png">
+<img src="https://user-images.githubusercontent.com/69563078/97226668-edae7280-1799-11eb-8d59-0ab250a72616.png">
 
 Upon pressing 'Receive Message', the corresponding self care message will be displayed in place of the meditation logo.
 
-<img src="assets/affirmation-select.png">
+<img src="https://user-images.githubusercontent.com/69563078/97226663-ebe4af00-1799-11eb-8f89-6da70907957f.png">
 
 If a user likes the message, they can click the star next to the message, indicating they want to add it to their favorites. Once added, a user can press 'Favorites' in order to be taken to a new screen that displays all their current favorite messages. Messages can only be unfavorited by clicking the star next to the message once it is displayed.
 
-<img src="assets/favorites.png">
+<img src="https://user-images.githubusercontent.com/69563078/97226664-ec7d4580-1799-11eb-82d8-64c8976f9d23.png">
 
 The project utilizes local storage to remember the name, favorites, and deleted messages of the user. If a user wants to restart the app they can click 'Log Out' on the main page or 'Reset Data' on the favorites display. If a user logs out, all of their saved preferences will be lost.
 
