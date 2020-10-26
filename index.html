@@ -7,61 +7,78 @@
 </head>
 
 <body>
-  <h1>✨ Self Care Center ✨</h1>
-  <section class="main">
-    <section class="message-select">
-      <h2>Which type of message?</h2>
-      <section class="choices">
-        <section class="radio-buttons">
-          <section class="selection-one">
-            <input type="radio" class="affirmation" name="message-type" value="affirmation">
-            <label for="affirmation" class="btntext">affirmation</label>
-          </section>
-          <section class="selection-two">
-            <input type="radio" class="mantra" name="message-type" value="mantra">
-            <label for="mantra" class="btntext">mantra</label>
-          </section>
-        </section>
-        <button type="button" class="message-button">Receive Message</button>
-      </section>
-    </section>
-    <section class="confirm-delete hidden">
-      <p>Are you sure you want to delete this message? It will also be removed from your favorites.</p>
-      <section class="confirmation-buttons">
-        <button type="button" class="yes">Yes</button>
-        <button type="button" class="no">No</button>
-      </section>
-    </section>
-    <section class="display">
-      <section class="favorite-display">
-        <img class="star-button hidden filter" src="assets/star.svg" alt="A little star" title="Click to favorite">
-        <p class="message hidden"></p>
-        <p class="error hidden">Please select a message type</p>
-      </section>
-      <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
-      <section class="display-buttons hidden">
-        <button type="button" class="favorites-button">Favorites</button>
-        <button type="button" class="clear-button">Clear</button>
-        <button type="button" class="delete-button">Delete</button>
-      </section>
-    </section>
+  <section class="log-in">
+    <h1>✨ Self Care Center ✨</h1>
+    <div class="log-in-div">
+      <h2 class="hello">Hello.</h2><br>
+      <p>Welcome to the Self Care Center.<br><br></p>
+      <div class="log-in-display">
+        <p>Please enter your name.</p>
+        <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
+        <div class="credentials">
+          <input type="text" id="name" placeholder="Your name"><br><br>
+          <button type="button">Enter</button>
+        </div>
+      </div>
+    </div>
   </section>
-  <section class="favorites hidden">
-    <h2>Saved Self Care</h2>
-    <section class="affirmation-display">
-      <section class="favorited-affirmations">
-        <h3>Favorite Affirmations</h3>
-        <ul class="saved-affirmations">
-        </ul>
+  <section class="full-site hidden">
+    <h1>✨ Self Care Center ✨</h1>
+    <section class="main">
+      <section class="message-select">
+        <h2>Which type of message?</h2>
+        <section class="choices">
+          <section class="radio-buttons">
+            <section class="selection-one">
+              <input type="radio" class="affirmation" name="message-type" value="affirmation">
+              <label for="affirmation" class="btntext">affirmation</label>
+            </section>
+            <section class="selection-two">
+              <input type="radio" class="mantra" name="message-type" value="mantra">
+              <label for="mantra" class="btntext">mantra</label>
+            </section>
+          </section>
+          <button type="button" class="message-button">Receive Message</button>
+        </section>
       </section>
-      <section class="favorited-mantras">
-        <h3>Favorite Mantras</h3>
-        <ul class="saved-mantras">
-        </ul>
+      <section class="confirm-delete hidden">
+        <p>Are you sure you want to delete this message? It will also be removed from your favorites.</p>
+        <section class="confirmation-buttons">
+          <button type="button" class="yes">Yes</button>
+          <button type="button" class="no">No</button>
+        </section>
+      </section>
+      <section class="display">
+        <section class="favorite-display">
+          <img class="star-button hidden filter" src="assets/star.svg" alt="A little star" title="Click to favorite">
+          <p class="message hidden"></p>
+          <p class="error hidden">Please select a message type</p>
+        </section>
+        <img class="meditation-image" src="assets/meditate.svg" alt="A little bell">
+        <section class="display-buttons hidden">
+          <button type="button" class="favorites-button">Favorites</button>
+          <button type="button" class="clear-button">Clear</button>
+          <button type="button" class="delete-button">Delete</button>
+        </section>
       </section>
     </section>
-    <button type="button" class="back-to-main">Get More Self Care</button>
-    <button type="button" class="remove-data">Reset Data</button>
+    <section class="favorites hidden">
+      <h2>Saved Self Care</h2>
+      <section class="affirmation-display">
+        <section class="favorited-affirmations">
+          <h3>Favorite Affirmations</h3>
+          <ul class="saved-affirmations">
+          </ul>
+        </section>
+        <section class="favorited-mantras">
+          <h3>Favorite Mantras</h3>
+          <ul class="saved-mantras">
+          </ul>
+        </section>
+      </section>
+      <button type="button" class="back-to-main">Get More Self Care</button>
+      <button type="button" class="remove-data">Reset Data</button>
+    </section>
   </section>
   <script type="text/javascript" src="src/data.js"></script>
   <script type="text/javascript" src="src/main.js"></script>
