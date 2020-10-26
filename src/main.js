@@ -4,7 +4,6 @@ affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
 mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
 var visitor = JSON.parse(localStorage.getItem(`visitor`)) || '';
 
-//query selectors
 var logInDisplay = document.querySelector('.log-in');
 var fullSiteDisplay = document.querySelector('.full-site');
 var mainDisplay = document.querySelector('.main');
@@ -35,9 +34,6 @@ var yesButton = document.querySelector('.yes');
 var noButton = document.querySelector('.no');
 var resetButton = document.querySelector('.remove-data');
 
-
-
-//event listeners
 affirmationRadio.addEventListener('click', removeMessage);
 mantraRadio.addEventListener('click', removeMessage);
 messageButton.addEventListener('click', displayMessage);
@@ -57,7 +53,6 @@ if (visitor !== '') {
   enterSite();
 }
 
-//event handlers
 function displayMessage() {
   if (verifySelection() === false) {
     errorMessage.classList.remove('hidden');
@@ -137,7 +132,6 @@ function enterSite() {
   }
 }
 
-//helper functions
 function revealMessage() {
   errorMessage.classList.add('hidden');
   bellImage.classList.add('hidden');
