@@ -59,9 +59,16 @@ button {
   height: 25px;
   font-size: 14px;
   margin: auto;
+  cursor: pointer;
   border-radius: 3px;
   border: 0px;
   background-color: #134d71;
+}
+
+.log-out {
+  margin: 20px auto;
+  color: white;
+  font-size: 20px;
 }
 
 .choices {
@@ -171,4 +178,52 @@ li {
 
 .hidden {
   display: none;
+}
+
+/* Log in page */
+.log-in-div {
+  margin: auto;
+  padding: 20px 0;
+  width: 50%;
+  min-height: 400px;
+  text-align: center;
+  background: white;
+  border-radius: 10px;
+}
+
+.hello {
+  color: black;
+  margin: 0;
+  margin-top: 10px;
+}
+
+.log-in-display {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+  min-height: 300px;
+  border-radius: 10px;
+  border: 1px solid #134d71;
+  padding-bottom: 10px;
+}
+
+.name {
+  color: black;
+  width: 150px;
+}
+
+.log-in-image {
+  max-width: 60px;
+  max-height: 60px;
+}
+
+.log-out {
+  width: 100px;
+}
+.log-out:hover {
+  border: 1px solid white;
+  cursor: pointer;
 }

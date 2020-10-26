@@ -2,8 +2,11 @@ var favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations
 var favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
 affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
 mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
+var visitor = JSON.parse(localStorage.getItem(`visitor`)) || ''
 
 //query selectors
+var logInDisplay = document.querySelector('.log-in')
+var fullSiteDisplay = document.querySelector('.full-site');
 var mainDisplay = document.querySelector('.main');
 var messageDisplay = document.querySelector('.display');
 var favoritesDisplay = document.querySelector('.favorites');
@@ -16,8 +19,12 @@ var errorMessage = document.querySelector('.error');
 var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
-var confirmDelete = document.querySelector('.confirm-delete')
+var confirmDelete = document.querySelector('.confirm-delete');
+var nameInput = document.querySelector('.name');
+var nameDisplay = document.querySelector('.name-display');
+var logOut = document.querySelector('.log-out')
 
+var enterButton = document.querySelector('.enter-button');
 var starButton = document.querySelector('.star-button');
 var favoritesButton = document.querySelector('.favorites-button');
 var clearButton = document.querySelector('.clear-button');
@@ -27,6 +34,8 @@ var deleteButton = document.querySelector('.delete-button')
 var yesButton = document.querySelector('.yes')
 var noButton = document.querySelector('.no')
 var resetButton = document.querySelector('.remove-data')
+
+
 
 //event listeners
 affirmationRadio.addEventListener('click', removeMessage);
@@ -40,6 +49,13 @@ deleteButton.addEventListener('click', toggleConfirm)
 yesButton.addEventListener('click', deleteMessage)
 noButton.addEventListener('click', toggleConfirm)
 resetButton.addEventListener('click', alertReset)
+enterButton.addEventListener('click', enterSite)
+logOut.addEventListener('click', logUserOut)
+
+if (visitor !== '') {
+  nameInput.value = visitor;
+  enterSite();
+}
 
 //event handlers
 function displayMessage() {
@@ -104,6 +120,21 @@ function alertReset() {
     localStorage.clear();
     window.location.reload();
   }
+}
+
+function enterSite() {
+  if (nameInput.value) {
+    logInDisplay.classList.toggle('hidden');
+    fullSiteDisplay.classList.toggle('hidden');
+    nameDisplay.innerText = `Hello, ${nameInput.value}. Which type of message?`
+    localStorage.setItem('visitor', JSON.stringify(nameInput.value))
+  }
+}
+
+function logUserOut() {
+  console.log('poopy')
+  localStorage.clear();
+  window.location.reload();
 }
 
 //helper functions
