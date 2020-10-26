@@ -106,8 +106,10 @@ function toggleConfirm() {
 function deleteMessage() {
   if (message.innerText != `Message deleted.`) {
     if (mantraRadio.checked) {
+      mantras.splice(mantras.indexOf(message.innerText), 1);
       removeFromLocalStorage('mantras', message.innerText, mantras);
     } else if (affirmationRadio.checked) {
+      affirmations.splice(affirmations.indexOf(message.innerText), 1);
       removeFromLocalStorage('affirmations', message.innerText, affirmations);
     }
     removeFromFavorites();
