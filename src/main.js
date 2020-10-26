@@ -130,6 +130,8 @@ function enterSite() {
     fullSiteDisplay.classList.toggle('hidden');
     nameDisplay.innerText = `Hello, ${nameInput.value}. Which type of message?`
     localStorage.setItem('visitor', JSON.stringify(nameInput.value))
+  } else {
+    nameInput.classList.add('error')
   }
 }
 
