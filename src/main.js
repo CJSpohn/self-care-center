@@ -132,7 +132,6 @@ function enterSite() {
 }
 
 function logUserOut() {
-  console.log('poopy')
   localStorage.clear();
   window.location.reload();
 }
