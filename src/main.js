@@ -2,10 +2,9 @@ var favoriteAffirmations = JSON.parse(localStorage.getItem(`favoriteAffirmations
 var favoriteMantras = JSON.parse(localStorage.getItem(`favoriteMantras`)) || [];
 affirmations = JSON.parse(localStorage.getItem('affirmations')) || affirmations;
 mantras = JSON.parse(localStorage.getItem('mantras')) || mantras;
-var visitor = JSON.parse(localStorage.getItem(`visitor`)) || ''
+var visitor = JSON.parse(localStorage.getItem(`visitor`)) || '';
 
-//query selectors
-var logInDisplay = document.querySelector('.log-in')
+var logInDisplay = document.querySelector('.log-in');
 var fullSiteDisplay = document.querySelector('.full-site');
 var mainDisplay = document.querySelector('.main');
 var messageDisplay = document.querySelector('.display');
@@ -15,14 +14,14 @@ var message = document.querySelector('.message');
 var affirmationRadio = document.querySelector('.affirmation');
 var mantraRadio = document.querySelector('.mantra');
 var favoriteStar = document.querySelector('.favorite-star');
-var errorMessage = document.querySelector('.error');
+var errorMessage = document.querySelector('.no-selection');
 var displayButtons = document.querySelector('.display-buttons');
 var savedAffirmations = document.querySelector('.saved-affirmations');
 var savedMantras = document.querySelector('.saved-mantras');
 var confirmDelete = document.querySelector('.confirm-delete');
 var nameInput = document.querySelector('.name');
 var nameDisplay = document.querySelector('.name-display');
-var logOut = document.querySelector('.log-out')
+var logOut = document.querySelector('.log-out');
 
 var enterButton = document.querySelector('.enter-button');
 var starButton = document.querySelector('.star-button');
@@ -30,14 +29,11 @@ var favoritesButton = document.querySelector('.favorites-button');
 var clearButton = document.querySelector('.clear-button');
 var messageButton = document.querySelector('.message-button');
 var backButton = document.querySelector('.back-to-main');
-var deleteButton = document.querySelector('.delete-button')
-var yesButton = document.querySelector('.yes')
-var noButton = document.querySelector('.no')
-var resetButton = document.querySelector('.remove-data')
+var deleteButton = document.querySelector('.delete-button');
+var yesButton = document.querySelector('.yes');
+var noButton = document.querySelector('.no');
+var resetButton = document.querySelector('.remove-data');
 
-
-
-//event listeners
 affirmationRadio.addEventListener('click', removeMessage);
 mantraRadio.addEventListener('click', removeMessage);
 messageButton.addEventListener('click', displayMessage);
@@ -45,23 +41,22 @@ clearButton.addEventListener('click', clearMessage);
 starButton.addEventListener('click', checkFavorites);
 favoritesButton.addEventListener('click', toggleFavorites);
 backButton.addEventListener('click', toggleFavorites);
-deleteButton.addEventListener('click', toggleConfirm)
-yesButton.addEventListener('click', deleteMessage)
-noButton.addEventListener('click', toggleConfirm)
-resetButton.addEventListener('click', alertReset)
-enterButton.addEventListener('click', enterSite)
-logOut.addEventListener('click', logUserOut)
+deleteButton.addEventListener('click', toggleConfirm);
+yesButton.addEventListener('click', deleteMessage);
+noButton.addEventListener('click', toggleConfirm);
+resetButton.addEventListener('click', alertReset);
+enterButton.addEventListener('click', enterSite);
+logOut.addEventListener('click', alertReset);
 
 if (visitor !== '') {
   nameInput.value = visitor;
   enterSite();
 }
 
-//event handlers
 function displayMessage() {
   if (verifySelection() === false) {
-    errorMessage.classList.remove('hidden')
-    bellImage.classList.add('hidden')
+    errorMessage.classList.remove('hidden');
+    bellImage.classList.add('hidden');
     return
   }
   getMessage();
@@ -106,9 +101,11 @@ function toggleConfirm() {
 function deleteMessage() {
   if (message.innerText != `Message deleted.`) {
     if (mantraRadio.checked) {
-      mantras.splice(mantras.indexOf(message.innerText), 1)
+      mantras.splice(mantras.indexOf(message.innerText), 1);
+      removeFromLocalStorage('mantras', message.innerText, mantras);
     } else if (affirmationRadio.checked) {
-      affirmations.splice(affirmations.indexOf(message.innerText), 1)
+      affirmations.splice(affirmations.indexOf(message.innerText), 1);
+      removeFromLocalStorage('affirmations', message.innerText, affirmations);
     }
     removeFromFavorites();
     message.innerText = `Message deleted.`;
@@ -128,17 +125,13 @@ function enterSite() {
   if (nameInput.value) {
     logInDisplay.classList.toggle('hidden');
     fullSiteDisplay.classList.toggle('hidden');
-    nameDisplay.innerText = `Hello, ${nameInput.value}. Which type of message?`
-    localStorage.setItem('visitor', JSON.stringify(nameInput.value))
+    nameDisplay.innerText = `Hello, ${nameInput.value}. Which type of message?`;
+    localStorage.setItem('visitor', JSON.stringify(nameInput.value));
+  } else {
+    nameInput.classList.add('error');
   }
 }
 
-function logUserOut() {
-  localStorage.clear();
-  window.location.reload();
-}
-
-//helper functions
 function revealMessage() {
   errorMessage.classList.add('hidden');
   bellImage.classList.add('hidden');
@@ -156,7 +149,7 @@ function getMessage() {
 }
 
 function verifySelection() {
-  return (affirmationRadio.checked || mantraRadio.checked)
+  return (affirmationRadio.checked || mantraRadio.checked);
 }
 
 function verifyFavorite() {
@@ -170,11 +163,11 @@ function verifyFavorite() {
 function removeFromFavorites() {
   starButton.classList.toggle('filter')
   if (mantraRadio.checked && favoriteMantras.includes(message.innerText)) {
+    favoriteMantras.splice(favoriteMantras.indexOf(message.innerText), 1);
     removeFromLocalStorage('favoriteMantras', message.innerText, mantras);
-    removeFromLocalStorage('mantras', message.innerText, mantras);
   } else if (affirmationRadio.checked && favoriteAffirmations.includes(message.innerText)) {
     removeFromLocalStorage('favoriteAffirmations', message.innerText, affirmations);
-    removeFromLocalStorage('affirmations', message.innerText, affirmations);
+    favoriteAffirmations.splice(favoriteAffirmations.indexOf(message.innerText), 1);
   }
 }
 
@@ -190,14 +183,14 @@ function addToFavorites() {
 }
 
 function saveToLocalStorage(arrayName, message) {
-  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || [];
+  arrayData = JSON.parse(localStorage.getItem(arrayName)) || [];
   arrayData.push(message);
   localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
 function removeFromLocalStorage(arrayName, message, array) {
-  var arrayData = JSON.parse(localStorage.getItem(arrayName)) || array;
-  arrayData.splice(arrayData.indexOf(message), 1);
+  arrayData = JSON.parse(localStorage.getItem(arrayName)) || array;
+  arrayData.splice(array.indexOf(message), 1);
   localStorage.setItem(arrayName, JSON.stringify(arrayData));
 }
 
